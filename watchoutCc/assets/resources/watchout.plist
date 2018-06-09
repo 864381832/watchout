@@ -4,14 +4,53 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>fangfang.png</key>
+            <key>Sound_Off.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{222,208},{218,204}}</string>
+                <string>{{735,702},{112,108}}</string>
+                <key>offset</key>
+                <string>{-4,-6}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{4,16},{112,108}}</string>
+                <key>sourceSize</key>
+                <string>{128,128}</string>
+            </dict>
+            <key>Sound_On.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,344},{120,108}}</string>
+                <key>offset</key>
+                <string>{-1,-6}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{3,16},{120,108}}</string>
+                <key>sourceSize</key>
+                <string>{128,128}</string>
+            </dict>
+            <key>back.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{515,483},{491,217}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{491,217}}</string>
+                <key>sourceSize</key>
+                <string>{491,217}</string>
+            </dict>
+            <key>fangfang.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,124},{218,204}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{218,204}}</string>
                 <key>sourceSize</key>
@@ -20,7 +59,7 @@
             <key>fangfangWing.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{57,458},{53,39}}</string>
+                <string>{{57,976},{53,39}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -30,23 +69,75 @@
                 <key>sourceSize</key>
                 <string>{53,41}</string>
             </dict>
-            <key>fangfang_jump.png</key>
+            <key>game_over.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{222,2},{218,204}}</string>
+                <string>{{2,2},{821,120}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{218,204}}</string>
+                <string>{{1,2},{821,120}}</string>
                 <key>sourceSize</key>
-                <string>{218,204}</string>
+                <string>{823,122}</string>
+            </dict>
+            <key>restart.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{825,2},{479,197}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{5,10},{479,197}}</string>
+                <key>sourceSize</key>
+                <string>{491,217}</string>
+            </dict>
+            <key>share.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,483},{491,217}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{491,217}}</string>
+                <key>sourceSize</key>
+                <string>{491,217}</string>
+            </dict>
+            <key>start_game.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{221,394},{628,292}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{628,292}}</string>
+                <key>sourceSize</key>
+                <string>{628,292}</string>
+            </dict>
+            <key>start_game1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{221,124},{576,268}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{25,12},{576,268}}</string>
+                <key>sourceSize</key>
+                <string>{628,292}</string>
             </dict>
             <key>yuanyuan.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,230},{218,226}}</string>
+                <string>{{515,702},{218,226}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +150,7 @@
             <key>yuanyuanWing.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,458},{53,39}}</string>
+                <string>{{2,976},{53,39}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -69,19 +160,6 @@
                 <key>sourceSize</key>
                 <string>{53,41}</string>
             </dict>
-            <key>yuanyuan_jump.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{218,226}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{218,226}}</string>
-                <key>sourceSize</key>
-                <string>{218,226}</string>
-            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -90,9 +168,9 @@
             <key>realTextureFileName</key>
             <string>watchout.png</string>
             <key>size</key>
-            <string>{512,512}</string>
+            <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:9a02f5cb7b7478a5df1d94dd992fb498$</string>
+            <string>$TexturePacker:SmartUpdate:4fc40b23760cc3c9c0051d60109e0807$</string>
             <key>textureFileName</key>
             <string>watchout.png</string>
         </dict>

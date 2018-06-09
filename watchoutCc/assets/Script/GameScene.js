@@ -1,108 +1,124 @@
-var BreakPlank = require("BreakPlank");
 var GameTools = require("GameTools");
 var GameUiTools = require("GameUiTools");
 var GameConfig = require("GameConfig");
+var AnimLayerTool = require("AnimLayerTool");
 cc.Class({
     extends: cc.Component,
 
     properties: {
         layerBack: cc.Node,
-        showHelpSprite: [cc.Node],
         startTime: 0,
-        timerLabel: cc.Label,
-        isCountDownMusic: true,//是否倒计时
-        breakPlank: new Array(2),
+        bestLabel: cc.Label,
+        scoreLabel: cc.Label,
+        yuanyuan: cc.Node,
+        fangfang: cc.Node,
+        yuanyuanWing: cc.Node,
+        fangfangWing: cc.Node,
+
+        gameState: 0, //游戏状态
+        jumpHeight: 0,//跳跃高度
+        runSpeed: 0,//移动速度
+        currentTag: 0,//当前小的TAG
     },
 
     ctor() {
         GameConfig.IS_GAME_START = false;
-        GameConfig.GAME_CARD_CLICK_NUM = 0;
-        GameConfig.GAME_START_TIME = 0;
-        GameConfig.AUTO_ADD_GAME_CARD_NUM = -1;
-
         GameConfig.GameScene = this;
     },
     onLoad() {
-        if (GameConfig.SUN_MENU_NUM == GameConfig.SunMenuNum.SunMenuNum1) {
-            this.timerLabel.string = "0.000''";
-        }
-        if (GameConfig.MAIN_MENU_NUM == GameConfig.MainMenu.MainMenuNumLeft) {
-            this.breakPlank[0] = BreakPlank.createBreakPlank(0, -GameConfig.DEVICE_WIDTH / 2.0, -GameConfig.DEVICE_WIDTH / 2.0 + GameConfig.CARD_WIDTH / 2);
-            this.node.addChild(this.breakPlank[0], 1, 1);
-        } else if (GameConfig.MAIN_MENU_NUM == GameConfig.MainMenu.MainMenuNumRight) {
-            this.breakPlank[1] = BreakPlank.createBreakPlank(1, GameConfig.DEVICE_WIDTH / 2.0, -GameConfig.DEVICE_WIDTH / 2 + GameConfig.CARD_WIDTH / 2);
-            this.node.addChild(this.breakPlank[1], 1, 1);
-        } else if (GameConfig.MAIN_MENU_NUM == GameConfig.MainMenu.MainMenuNumBoth) {
-            this.breakPlank[0] = BreakPlank.createBreakPlank(0, -GameConfig.DEVICE_WIDTH / 2, -GameConfig.DEVICE_WIDTH / 2 + GameConfig.CARD_WIDTH / 2);
-            this.breakPlank[1] = BreakPlank.createBreakPlank(1, GameConfig.DEVICE_WIDTH / 2.0, -GameConfig.DEVICE_WIDTH / 2 + GameConfig.CARD_WIDTH / 2);
-            this.node.addChild(this.breakPlank[0], 1, 1);
-            this.node.addChild(this.breakPlank[1], 1, 1);
-        }
-        this.showHelpView(true);
     },
 
     start() {
+        this.layerBack.on(cc.Node.EventType.TOUCH_START, this.onTouchBegan, this);
+        this.startGame();
+    },
+
+    onTouchBegan(event) {
+        if (!GameConfig.IS_GAME_START) {
+            return;
+        }
+        GameTools.playSimpleAudioEngine(3);
+        let touchPoint = event.touch.getLocation();
+        if (touchPoint.x < cc.director.getWinSize().width / 2) {
+            if (this.yuanyuan.y < -106) {
+                this.yuanyuan.rotation = -30;
+                let jumpBy = cc.jumpBy(0.5, 50, 0, 240, 1);
+                let rotateTo = cc.rotateTo(0.5, 0);
+                this.yuanyuan.runAction(cc.spawn(jumpBy, rotateTo));
+            }
+        } else {
+            if (this.fangfang.y < -106) {
+                this.fangfang.rotation = 30;
+                let jumpBy = cc.jumpBy(0.5, -50, 0, 240, 1);
+                let rotateTo = cc.rotateTo(0.5, 0);
+                this.fangfang.runAction(cc.spawn(jumpBy, rotateTo));
+            }
+        }
     },
 
     update(dt) {
         if (!GameConfig.IS_GAME_START) {
             return;
         }
-        GameConfig.GAME_START_TIME = (new Date().getTime() - this.startTime) / 1000;
-        if (GameConfig.SUN_MENU_NUM == GameConfig.SunMenuNum.SunMenuNum1) {
-            this.timerLabel.string = GameConfig.GAME_START_TIME.toFixed(3) + "''";
-            if (GameConfig.MAIN_MENU_NUM == GameConfig.MainMenu.MainMenuNumBoth) {
-                if (GameConfig.GAME_CARD_CLICK_NUM == 36) {
-                    this.gameOverScene(true);
-                }
+        if (this.yuanyuan.getBoundingBox().intersects(this.fangfang.getBoundingBox())) {
+            cc.log("碰撞了");
+            if (this.yuanyuan.scale == 0.5) {
+                // this.yuanyuan.active = false;
+                this.yuanyuan.number = 0;
+                AnimLayerTool.createPopStarAnim(this.yuanyuan, 0);
+                this.fangfang.pauseAllActions();
             } else {
-                if (GameConfig.GAME_CARD_CLICK_NUM == 24) {
-                    this.gameOverScene(true);
-                }
+                // this.fangfang.active = false;
+                this.fangfang.number = 1;
+                AnimLayerTool.createPopStarAnim(this.fangfang, 0);
+                this.yuanyuan.pauseAllActions();
             }
-        } else if (GameConfig.SUN_MENU_NUM == GameConfig.SunMenuNum.SunMenuNum2) {
-            this.timerLabel.string = GameConfig.GAME_CARD_CLICK_NUM;
-            if (GameConfig.MAIN_MENU_NUM == GameConfig.MainMenu.MainMenuNumBoth) {
-                if (GameConfig.AUTO_ADD_GAME_CARD_NUM - 2 > GameConfig.GAME_CARD_CLICK_NUM) {
-                    this.gameOverScene(false);
-                }
-            } else {
-                if (GameConfig.AUTO_ADD_GAME_CARD_NUM - 1 > GameConfig.GAME_CARD_CLICK_NUM) {
-                    this.gameOverScene(false);
-                }
-            }
-        } else if (GameConfig.SUN_MENU_NUM == GameConfig.SunMenuNum.SunMenuNum3) {
-            this.timerLabel.string = GameConfig.GAME_CARD_CLICK_NUM;
-            if (this.isCountDownMusic && GameConfig.GAME_START_TIME > 9.7) {
-                this.isCountDownMusic = false;
-                this.schedule(this.CountDownMusic, 1.0, 3, 0);
-            }
-            if (GameConfig.GAME_START_TIME > 15) {
-                this.gameOverScene(true);
-            }
+            this.gameOverScene();
         }
     },
 
-    showHelpView(isShow) {
-        this.showHelpSprite[0].active = isShow;
-        this.showHelpSprite[1].active = isShow;
+//开始游戏
+    startGame() {
+        GameConfig.IS_GAME_START = true;
+        GameConfig.GameCore = 0;
+        this.scoreLabel.string = GameConfig.GameCore;
+        this.bestLabel.string = GameConfig.GameHeightScore;
+        this.runSpeed = 0;
+        this.resetRunner();
     },
 
-    CountDownMusic(dt) {//倒计时声音
-        GameTools.playSimpleAudioEngine(3);
+    //随机产生身体小的
+    resetRunner: function () {
+        let random = Math.random();
+        if (random < 0.5) {
+            this.yuanyuan.setScale(0.5);
+            this.fangfang.setScale(1);
+        } else {
+            this.fangfang.setScale(0.5);
+            this.yuanyuan.setScale(1);
+        }
+        this.yuanyuan.x = -360 - 218;
+        this.fangfang.x = 360 + 218;
+        let move1 = cc.moveBy(2 - GameConfig.GameCore / 50, 720 + 218, 0);
+        let move2 = cc.moveBy(2 - GameConfig.GameCore / 50, -720 - 218, 0);
+        let moveFinish = cc.callFunc(this.callFuncCard, this);
+        this.yuanyuan.runAction(cc.sequence(move1, moveFinish))
+        this.fangfang.runAction(move2)
     },
-
-//开始计时
-    startTimer() {
-        this.showHelpView(false);
-        this.startTime = new Date().getTime();
+    callFuncCard: function (sender) {
+        GameTools.playSimpleAudioEngine(4);
+        this.scoreLabel.string = ++GameConfig.GameCore;
+        if (GameConfig.GameCore > GameConfig.GameHeightScore) {
+            GameConfig.GameHeightScore = GameConfig.GameCore;
+            this.bestLabel.string = GameConfig.GameHeightScore;
+            GameTools.setItemByLocalStorage("GameHeightScore", GameConfig.GameHeightScore);
+        }
+        this.resetRunner();
     },
-
 //游戏结束
-    gameOverScene(skipType) {
-        GameTools.playSimpleAudioEngine(5);
-        GameConfig.IS_GAME_OVER = skipType;
+    gameOverScene() {
+        GameTools.playSimpleAudioEngine(2);
         GameConfig.IS_GAME_START = false;
-        GameUiTools.loadingScene("GameOver");
+        GameUiTools.loadingLayer("panel/GameOver");
     }
 });

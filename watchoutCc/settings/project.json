@@ -13,7 +13,22 @@
   ],
   "design-resolution-height": 1280,
   "design-resolution-width": 720,
-  "excluded-modules": [],
+  "excluded-modules": [
+    "TiledMap",
+    "Spine Skeleton",
+    "ProgressBar",
+    "Toggle",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "RichText",
+    "Graphics",
+    "DragonBones",
+    "Physics",
+    "StudioComponent",
+    "Camera",
+    "Native NetWork"
+  ],
   "fit-height": true,
   "fit-width": false,
   "group-list": [

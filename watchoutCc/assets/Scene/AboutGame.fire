@@ -206,9 +206,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 198,
+      "g": 226,
+      "b": 237,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -391,7 +391,7 @@
     "_enabled": true,
     "_custom": true,
     "_texture": {
-      "__uuid__": "0275e94c-56a7-410f-bd1a-fc7483f7d14a"
+      "__uuid__": "299a7923-065a-4c9e-ab68-18196724b1ab"
     },
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
@@ -505,8 +505,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 256,
-      "height": 256
+      "width": 246,
+      "height": 246
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -533,7 +533,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "3e17b993-8cc5-4118-b665-4f624e813a3e"
+      "__uuid__": "98b20c2c-c31e-40cb-8cdc-d606cbfac247"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -621,7 +621,7 @@
     "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
-    "_N$string": "贱鸟跳跳微信小游戏版\n无需下载，扫码即玩\n赶紧来亮出你的得分吧！",
+    "_N$string": "大鸟撞小鸟微信小游戏版\n无需下载，扫码即玩\n赶紧来亮出你的得分吧！",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -637,8 +637,8 @@
     "_enabled": true,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
+      "r": 148,
+      "g": 231,
       "b": 0,
       "a": 255
     },
@@ -774,7 +774,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 333,
+      "width": 383,
       "height": 60
     },
     "_rotationX": 0,
@@ -809,7 +809,7 @@
     "_N$file": null,
     "_isSystemFontUsed": false,
     "_spacingX": 0,
-    "_N$string": "贱鸟跳跳  V1.0",
+    "_N$string": "大鸟撞小鸟  V1.0",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",

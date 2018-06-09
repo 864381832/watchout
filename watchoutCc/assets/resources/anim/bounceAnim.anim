@@ -1,0 +1,25 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "bounceAnim",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.5,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 54,
+  "curveData": {
+    "props": {
+      "rotation": [
+        {
+          "frame": 0,
+          "value": 10
+        },
+        {
+          "frame": 0.5,
+          "value": -15
+        }
+      ]
+    }
+  },
+  "events": []
+}

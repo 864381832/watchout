@@ -12,6 +12,7 @@ cc.Class({
 
     loadingResource() {
         GameConfig.IS_GAME_MUSIC = GameTools.getItemByLocalStorage("IS_GAME_MUSIC", true);
+        GameConfig.GameHeightScore = GameTools.getItemByLocalStorage("GameHeightScore", 0);
         this.initFrameCache();
         this.initWxSetting();
         cc.director.preloadScene("MenuUI", function () {
@@ -43,7 +44,7 @@ cc.Class({
             });
             let LaunchOption = wx.getLaunchOptionsSync();
             // if (LaunchOption.query != {} && LaunchOption.query.x != undefined) {
-                // GameConfig.MAIN_MENU_NUM = Number(LaunchOption.query.x);
+            // GameConfig.MAIN_MENU_NUM = Number(LaunchOption.query.x);
             // }
             if (LaunchOption.shareTicket != undefined) {
                 setTimeout(() => {
@@ -61,7 +62,7 @@ cc.Class({
             }
             let info = window.wx.getSystemInfoSync();
             GameConfig.GameClubButton = window.wx.createGameClubButton({
-                icon: 'dark',
+                icon: 'green',
                 style: {
                     left: info.windowWidth / 6,
                     top: info.windowHeight * 91 / 100,

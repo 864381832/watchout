@@ -1,5 +1,18 @@
 {
+  "appKey": "",
+  "appSecret": "",
+  "encryptJs": true,
   "excludeScenes": [],
+  "fb-instant-games": {},
+  "includeAnySDK": false,
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": false,
+  "jailbreakPlatform": false,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "oauthLoginServer": "",
+  "optimizeHotUpdate": false,
   "orientation": {
     "landscapeLeft": true,
     "landscapeRight": true,
@@ -7,7 +20,22 @@
     "upsideDown": false
   },
   "packageName": "org.cocos2d.helloworld",
-  "startScene": "2d2f792f-a40c-49bb-a189-ed176a246e49",
-  "title": "hello_world",
-  "webOrientation": "auto"
+  "privateKey": "",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait"
+  },
+  "renderMode": "0",
+  "startScene": "f444daec-76a7-4e17-bca9-cf74e3a70412",
+  "title": "watchout",
+  "webOrientation": "portrait",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx99132b50872da430",
+    "isSubdomain": false,
+    "orientation": "portrait",
+    "subContext": "watchoutRank"
+  },
+  "xxteaKey": "4a156f3e-1435-42",
+  "zipCompressJs": true
 }

@@ -9,19 +9,16 @@ var GameTools = {
                     cc.audioEngine.play(cc.url.raw('resources/audios/sfx_button.wav'), false, 0.5);
                     break;
                 case 1:
-                    cc.audioEngine.play(cc.url.raw('resources/audios/clickcard.wav'), false, 0.5);
+                    cc.audioEngine.play(cc.url.raw('resources/audios/sfx_highscore.wav'), false, 0.5);
                     break;
                 case 2:
-                    cc.audioEngine.play(cc.url.raw("resources/audios/new_record.mp3"), false, 0.5);
+                    cc.audioEngine.play(cc.url.raw("resources/audios/sfx_player_die.wav"), false, 0.5);
                     break;
                 case 3:
-                    cc.audioEngine.play(cc.url.raw("resources/audios/soundP.mp3"), false, 0.5);
+                    cc.audioEngine.play(cc.url.raw("resources/audios/sfx_player_jump.wav"), false, 0.5);
                     break;
                 case 4:
-                    cc.audioEngine.play(cc.url.raw("resources/audios/photo.wav"), false, 0.5);
-                    break;
-                case 5:
-                    cc.audioEngine.play(cc.url.raw("resources/audios/timeout.mp3"), false, 0.5);
+                    cc.audioEngine.play(cc.url.raw("resources/audios/sfx_score.wav"), false, 0.5);
                     break;
                 default:
                     break;
@@ -66,9 +63,9 @@ var GameTools = {
     {
     }
     , sharePicture(pictureName) {
-        let titleStr = '快来跟我一起挑战踩你妹吧。';
+        let titleStr = '快来跟我一起挑战大鸟撞小鸟吧。';
         if ("shareTicket" == pictureName) {
-            titleStr = "看看你在群里排第几？快来和我挑战踩你妹吧。";
+            titleStr = "看看你在群里排第几？快来和我挑战大鸟撞小鸟吧。";
         } else if (pictureName != undefined && pictureName != null) {
             // titleStr = "我得了" + pictureName + "分," + titleStr;
         }
@@ -86,7 +83,6 @@ var GameTools = {
                             window.wx.postMessage({
                                 messageType: 5,
                                 MAIN_MENU_NUM: GameConfig.MAIN_MENU_NUM,
-                                SUN_MENU_NUM: GameConfig.SUN_MENU_NUM,
                                 shareTicket: res.shareTickets[0]
                             });
                         }
@@ -145,19 +141,14 @@ var GameTools = {
         }
     }
     , submitScore(score) { //提交得分
-        // let score = GameConfig.GAME_CARD_CLICK_NUM;
-        // if(GameConfig.SUN_MENU_NUM == GameConfig.SunMenuNum.SunMenuNum1){
-        //     score = GameConfig.GAME_START_TIME.toFixed(3);
-        // }
         if (CC_WECHATGAME) {
             window.wx.postMessage({
                 messageType: 3,
                 MAIN_MENU_NUM: GameConfig.MAIN_MENU_NUM,
-                SUN_MENU_NUM: GameConfig.SUN_MENU_NUM,
                 score: score,
             });
         } else {
-            cc.log("提交得分:" + GameConfig.MAIN_MENU_NUM + "_" + GameConfig.SUN_MENU_NUM + " : " + score)
+            cc.log("提交得分:" + GameConfig.MAIN_MENU_NUM + " : " + score)
         }
     }
 };

@@ -14,11 +14,12 @@ cc.Class({
 
     onLoad() {
         if (!GameConfig.IS_GAME_MUSIC) {
-            this.musicButton.getComponent(cc.Sprite).spriteFrame = GameTools.love2048FrameCache.getSpriteFrame("music2");
+            this.musicButton.getComponent(cc.Sprite).spriteFrame = GameTools.love2048FrameCache.getSpriteFrame("Sound_Off");
         }
         GameUiTools.setButtonClickEvents(this, this.startGameButton, "startGameButtonFunc", 1, false);
         GameUiTools.setButtonClickEvents(this, this.musicButton, "musicButtonFunc");
         GameUiTools.setButtonClickEvents(this, this.anbotButton, "anbotButtonFunc");
+        AnimLayerTool.bottonAnim(this.startGameButton);
     },
 
     start() {
@@ -31,7 +32,7 @@ cc.Class({
 
     startGameButtonFunc: function (event, customEventData) {
         GameTools.playSimpleAudioEngine(0);
-        cc.log("开始")
+        cc.director.loadScene('GameScene');
     },
 
     musicButtonFunc: function () {
@@ -39,9 +40,9 @@ cc.Class({
         GameConfig.IS_GAME_MUSIC = !GameConfig.IS_GAME_MUSIC;
         GameTools.setItemByLocalStorage("IS_GAME_MUSIC", GameConfig.IS_GAME_MUSIC);
         if (GameConfig.IS_GAME_MUSIC) {
-            this.musicButton.getComponent(cc.Sprite).spriteFrame = GameTools.love2048FrameCache.getSpriteFrame("music1");
+            this.musicButton.getComponent(cc.Sprite).spriteFrame = GameTools.love2048FrameCache.getSpriteFrame("Sound_On");
         } else {
-            this.musicButton.getComponent(cc.Sprite).spriteFrame = GameTools.love2048FrameCache.getSpriteFrame("music2");
+            this.musicButton.getComponent(cc.Sprite).spriteFrame = GameTools.love2048FrameCache.getSpriteFrame("Sound_Off");
         }
     },
 
