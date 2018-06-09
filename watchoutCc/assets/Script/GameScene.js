@@ -31,6 +31,10 @@ cc.Class({
     start() {
         this.layerBack.on(cc.Node.EventType.TOUCH_START, this.onTouchBegan, this);
         this.startGame();
+        let manager = cc.director.getCollisionManager();
+        manager.enabled = true;
+        // manager.enabledDebugDraw = true;
+        // manager.enabledDrawBoundingBox = true;
     },
 
     onTouchBegan(event) {
@@ -42,39 +46,41 @@ cc.Class({
         if (touchPoint.x < cc.director.getWinSize().width / 2) {
             if (this.yuanyuan.y < -106) {
                 this.yuanyuan.rotation = -30;
-                let jumpBy = cc.jumpBy(0.5, 50, 0, 240, 1);
-                let rotateTo = cc.rotateTo(0.5, 0);
+                let jumpBy = cc.jumpBy(0.4, 30, 0, 140, 1);
+                let rotateTo = cc.rotateTo(0.4, 0);
                 this.yuanyuan.runAction(cc.spawn(jumpBy, rotateTo));
             }
         } else {
             if (this.fangfang.y < -106) {
                 this.fangfang.rotation = 30;
-                let jumpBy = cc.jumpBy(0.5, -50, 0, 240, 1);
-                let rotateTo = cc.rotateTo(0.5, 0);
+                let jumpBy = cc.jumpBy(0.4, -30, 0, 140, 1);
+                let rotateTo = cc.rotateTo(0.4, 0);
                 this.fangfang.runAction(cc.spawn(jumpBy, rotateTo));
             }
         }
     },
 
     update(dt) {
-        if (!GameConfig.IS_GAME_START) {
-            return;
+        // if (!GameConfig.IS_GAME_START) {
+        //     return;
+        // }
+        // if (this.yuanyuan.getBoundingBox().intersects(this.fangfang.getBoundingBox())) {
+        //     this.gameOverScene();
+        // }
+    },
+    gameCollision:function(){
+        if (this.yuanyuan.scale == 0.5) {
+            // this.yuanyuan.active = false;
+            this.yuanyuan.number = 0;
+            AnimLayerTool.createPopStarAnim(this.yuanyuan, 0);
+            this.fangfang.pauseAllActions();
+        } else {
+            // this.fangfang.active = false;
+            this.fangfang.number = 1;
+            AnimLayerTool.createPopStarAnim(this.fangfang, 0);
+            this.yuanyuan.pauseAllActions();
         }
-        if (this.yuanyuan.getBoundingBox().intersects(this.fangfang.getBoundingBox())) {
-            cc.log("碰撞了");
-            if (this.yuanyuan.scale == 0.5) {
-                // this.yuanyuan.active = false;
-                this.yuanyuan.number = 0;
-                AnimLayerTool.createPopStarAnim(this.yuanyuan, 0);
-                this.fangfang.pauseAllActions();
-            } else {
-                // this.fangfang.active = false;
-                this.fangfang.number = 1;
-                AnimLayerTool.createPopStarAnim(this.fangfang, 0);
-                this.yuanyuan.pauseAllActions();
-            }
-            this.gameOverScene();
-        }
+        this.gameOverScene();
     },
 
 //开始游戏
