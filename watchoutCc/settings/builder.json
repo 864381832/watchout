@@ -6,7 +6,7 @@
   "fb-instant-games": {},
   "includeAnySDK": false,
   "includeSDKBox": false,
-  "inlineSpriteFrames": true,
+  "inlineSpriteFrames": false,
   "inlineSpriteFrames_native": false,
   "jailbreakPlatform": false,
   "md5Cache": true,

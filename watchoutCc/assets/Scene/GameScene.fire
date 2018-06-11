@@ -1049,7 +1049,6 @@
     "layerBack": {
       "__id__": 4
     },
-    "startTime": 0,
     "bestLabel": {
       "__id__": 7
     },
@@ -1063,11 +1062,7 @@
       "__id__": 17
     },
     "yuanyuanWing": null,
-    "fangfangWing": null,
-    "gameState": 0,
-    "jumpHeight": 0,
-    "runSpeed": 0,
-    "currentTag": 0
+    "fangfangWing": null
   },
   {
     "__type__": "cc.Canvas",

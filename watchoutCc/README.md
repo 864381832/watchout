@@ -1,2 +1,2 @@
-# hello-world
-Hello world new project template.
+# 大鸟撞小鸟主程序
+大鸟撞小鸟主游戏逻辑项目。

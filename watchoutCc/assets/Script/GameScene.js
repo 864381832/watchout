@@ -7,18 +7,12 @@ cc.Class({
 
     properties: {
         layerBack: cc.Node,
-        startTime: 0,
         bestLabel: cc.Label,
         scoreLabel: cc.Label,
         yuanyuan: cc.Node,
         fangfang: cc.Node,
         yuanyuanWing: cc.Node,
         fangfangWing: cc.Node,
-
-        gameState: 0, //游戏状态
-        jumpHeight: 0,//跳跃高度
-        runSpeed: 0,//移动速度
-        currentTag: 0,//当前小的TAG
     },
 
     ctor() {
@@ -31,8 +25,7 @@ cc.Class({
     start() {
         this.layerBack.on(cc.Node.EventType.TOUCH_START, this.onTouchBegan, this);
         this.startGame();
-        let manager = cc.director.getCollisionManager();
-        manager.enabled = true;
+        cc.director.getCollisionManager().enabled = true;
         // manager.enabledDebugDraw = true;
         // manager.enabledDrawBoundingBox = true;
     },
@@ -46,14 +39,14 @@ cc.Class({
         if (touchPoint.x < cc.director.getWinSize().width / 2) {
             if (this.yuanyuan.y < -106) {
                 this.yuanyuan.rotation = -30;
-                let jumpBy = cc.jumpBy(0.4, 30, 0, 140, 1);
+                let jumpBy = cc.jumpBy(0.4, 30 - GameConfig.GameCore, 0, 140, 1);
                 let rotateTo = cc.rotateTo(0.4, 0);
                 this.yuanyuan.runAction(cc.spawn(jumpBy, rotateTo));
             }
         } else {
             if (this.fangfang.y < -106) {
                 this.fangfang.rotation = 30;
-                let jumpBy = cc.jumpBy(0.4, -30, 0, 140, 1);
+                let jumpBy = cc.jumpBy(0.4, -30 + GameConfig.GameCore, 0, 140, 1);
                 let rotateTo = cc.rotateTo(0.4, 0);
                 this.fangfang.runAction(cc.spawn(jumpBy, rotateTo));
             }
@@ -89,7 +82,6 @@ cc.Class({
         GameConfig.GameCore = 0;
         this.scoreLabel.string = GameConfig.GameCore;
         this.bestLabel.string = GameConfig.GameHeightScore;
-        this.runSpeed = 0;
         this.resetRunner();
     },
 

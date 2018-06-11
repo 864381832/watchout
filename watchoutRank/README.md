@@ -1,2 +1,2 @@
-# hello-world
-Hello world new project template.
+# 大鸟撞小鸟排行榜工程
+大鸟撞小鸟中得分提交及排行榜工程

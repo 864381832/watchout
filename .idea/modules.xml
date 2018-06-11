@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/watchout.iml" filepath="$PROJECT_DIR$/.idea/watchout.iml" />
       <module fileurl="file://$PROJECT_DIR$/watchoutCc/watchoutCc.iml" filepath="$PROJECT_DIR$/watchoutCc/watchoutCc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/watchoutRank/watchoutRank.iml" filepath="$PROJECT_DIR$/watchoutRank/watchoutRank.iml" />
     </modules>
   </component>
 </project>
